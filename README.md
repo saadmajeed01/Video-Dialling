@@ -254,65 +254,6 @@ $ docker-compose down
 
 </details>
 
-<details open>
-<summary>Hetzner & Contabo</summary>
-
-<br/>
-
-[![Hetzner](public/sponsors/Hetzner.png)](https://hetzner.cloud/?ref=XdRifCzCK3bn)
-
-This application is running for `demonstration purposes` on [Hetzner](https://www.hetzner.com/), one of `the best` [cloud providers](https://www.hetzner.com/cloud) and [dedicated root servers](https://www.hetzner.com/dedicated-rootserver).
-
----
-
-Use [my personal link](https://hetzner.cloud/?ref=XdRifCzCK3bn) to receive `€⁠20 IN CLOUD CREDITS`.
-
----
-
-[![Contabo](public/advertisers/ContaboLogo.png)](https://www.dpbolvw.net/click-101027391-14462707)
-
-Experience also top-tier German web hosting – dedicated servers, VPS, and web hosting at `unbeatable prices`. Reliable, secure, and backed by 24/7 support. [Explore now here](https://www.dpbolvw.net/click-101027391-14462707)
-
----
-
-To set up your own instance of `Video Dialling` on a dedicated cloud server, please refer to our comprehensive [self-hosting documentation](https://docs.videodialling.com/videodialling-sfu/self-hosting/). This guide will walk you through the process step by step, ensuring a smooth and successful deployment.
-
-</details>
-
-<details>
-<summary>DigitalOcean</summary>
-
-<br/>
-
-[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=1070207afbb1&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
-
-For personal use, you can start with a single $5 a month cloud server and scale up as needed. You can use [this link](https://m.do.co/c/1070207afbb1) to get a `$100 credit for the first 60 days`.
-
-</details>
-
-<details>
-<summary>Live Demo</summary>
-
-<br/>
-
-<a target="_blank" href="https://hetzner.cloud/?ref=XdRifCzCK3bn"><img src="public/sponsors/Hetzner.png" style="width: 220px;"></a>
-
-https://sfu.videodialling.com
-
-[![videodialling-qr](public/images/videodialling-qr.png)](https://sfu.videodialling.com/)
-
-</details>
-
-<details>
-<summary>Credits</summary>
-
-<br/>
-
--   [Averox](https://averox.com) (html template)
--   [Dirk Vanbeveren](https://github.com/Dirvann) (sfu logic)
--   [Mediasoup](https://mediasoup.org) (sfu server)
-
-</details>
 
 <details>
 <summary>Contributing</summary>
