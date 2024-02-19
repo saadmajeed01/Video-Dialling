@@ -1,4 +1,4 @@
-<h1 align="center">videodialling</h1>
+<h1 align="center">Video Dialling</h1>
 
 <br />
 
@@ -7,7 +7,7 @@
 <hr />
 
 <p align="center">
-    <a href="https://sfu.videodialling.com/">Explore videodialling</a>
+    <a href="https://sfu.videodialling.com/">Explore Video Dialling</a>
 </p>
 
 <hr />
@@ -21,7 +21,7 @@
 <hr />
 
 <p align="center">
-    Join our community for questions, discussions, and support on <a href="https://discord.gg/rgGYfeYW3N">Discord</a>
+    Join our community for questions, discussions, and support on <a href="https://averox.com">Averox</a>
 </p>
 
 <hr />
@@ -159,7 +159,7 @@ To embed a meeting in `your service or app` using an iframe, use the following c
 
 <br/>
 
--   Before running videodialling, ensure you have `Node.js` and all [requirements](https://mediasoup.org/documentation/v3/mediasoup/installation/#requirements) installed. This project has been tested with Node version [16.X](https://nodejs.org/en/blog/release/v16.15.1/) and [18.X](https://nodejs.org/en/download).
+-   Before running video dialling, ensure you have `Node.js` and all [requirements](https://mediasoup.org/documentation/v3/mediasoup/installation/#requirements) installed. This project has been tested with Node version [16.X](https://nodejs.org/en/blog/release/v16.15.1/) and [18.X](https://nodejs.org/en/download).
 
 -   Requirements install example for `Ubuntu 20.04`
 
@@ -184,7 +184,7 @@ $ npm install -g npm@latest
 
 ```bash
 # Clone this repo
-$ git clone https://github.com/videodialling/videodialling.git
+$ git clone https://github.com/saadmajeed01/Video-Dialling.git
 # Go to to dir videodialling
 $ cd videodialling
 # Copy app/src/config.template.js in app/src/config.js and edit it if needed
@@ -200,11 +200,6 @@ $ PORT=3011 npm start
 -   Open [https://localhost:3010](https://localhost:3010) or `:3011` if the default port has been changed in your browser.
 
 <br/>
-
-> \[!NOTE]
->
-> To run `videodialling` on a `Windows operating system`, you can follow the instructions provided in [this documentation](https://github.com/videodialling/videodialling/issues/99#issuecomment-1586073853).
-
 </details>
 
 <details open>
@@ -280,7 +275,7 @@ Experience also top-tier German web hosting – dedicated servers, VPS, and web 
 
 ---
 
-To set up your own instance of `videodialling` on a dedicated cloud server, please refer to our comprehensive [self-hosting documentation](https://docs.videodialling.com/videodialling-sfu/self-hosting/). This guide will walk you through the process step by step, ensuring a smooth and successful deployment.
+To set up your own instance of `Video Dialling` on a dedicated cloud server, please refer to our comprehensive [self-hosting documentation](https://docs.videodialling.com/videodialling-sfu/self-hosting/). This guide will walk you through the process step by step, ensuring a smooth and successful deployment.
 
 </details>
 
@@ -313,7 +308,7 @@ https://sfu.videodialling.com
 
 <br/>
 
--   [Davide Pacilio](https://cruip.com/demos/solid/) (html template)
+-   [Averox](https://averox.com) (html template)
 -   [Dirk Vanbeveren](https://github.com/Dirvann) (sfu logic)
 -   [Mediasoup](https://mediasoup.org) (sfu server)
 
@@ -336,9 +331,9 @@ https://sfu.videodialling.com
 
 [![AGPLv3](public/images/AGPLv3.png)](LICENSE)
 
-videodialling is free and open-source under the terms of AGPLv3 (GNU Affero General Public License v3.0). Please `respect the license conditions`, In particular `modifications need to be free as well and made available to the public`. Get a quick overview of the license at [Choose an open source license](https://choosealicense.com/licenses/agpl-3.0/).
+Videodialling is free and open-source under the terms of AGPLv3 (GNU Affero General Public License v3.0). Please `respect the license conditions`, In particular `modifications need to be free as well and made available to the public`. Get a quick overview of the license at [Choose an open source license](https://choosealicense.com/licenses/agpl-3.0/).
 
-To obtain a [videodialling license](https://docs.videodialling.com/license/licensing-options/) with terms different from the AGPLv3, you can conveniently make your [purchase on CodeCanyon](https://codecanyon.net/item/videodialling-sfu-webrtc-realtime-video-conferences/40769970). This allows you to tailor the licensing conditions to better suit your specific requirements.
+To obtain a [videodialling license](https://docs.videodialling.com/license/licensing-options/) with terms different from the AGPLv3, you can conveniently make your [purchase on Averox](https://averox.com/solutions/). This allows you to tailor the licensing conditions to better suit your specific requirements.
 
 </details>
 
@@ -347,7 +342,7 @@ To obtain a [videodialling license](https://docs.videodialling.com/license/licen
 
 <br/>
 
-Do you find videodialling indispensable for your needs? Join us in supporting this transformative project by [becoming a backer or sponsor](https://github.com/sponsors/videodialling). By doing so, not only will your logo prominently feature here, but you'll also drive the growth and sustainability of videodialling. Your support is vital in ensuring that this valuable platform continues to thrive and remain accessible for all. Make an impact – back videodialling today and be part of this exciting journey!
+Do you find videodialling indispensable for your needs? Join us in supporting this transformative project by [becoming a backer or sponsor](https://averox.com). By doing so, not only will your logo prominently feature here, but you'll also drive the growth and sustainability of videodialling. Your support is vital in ensuring that this valuable platform continues to thrive and remain accessible for all. Make an impact – back videodialling today and be part of this exciting journey!
 
 |                                                                                   |                                                                                        |
 | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -368,6 +363,7 @@ Do you find videodialling indispensable for your needs? Join us in supporting th
 
 </details>
 
+<!--
 ## Diving into Additional videodialling Projects:
 
 <details>
@@ -405,6 +401,7 @@ Try also [videodialling BRO](https://github.com/videodialling/videodiallingbro) 
 Try also [videodialling WEB](https://github.com/videodialling/videodiallingwebrtc) a platform that allows for the management of an `unlimited number of users`. Each user must register with their email, username, and password, after which they gain access to their `personal dashboard`. Within the dashboard, users can `manage their rooms and schedule meetings` using the desired version of videodialling on a specified date and time. Invitations to these meetings can be sent via email, shared through the web browser, or sent via SMS.
 
 </details>
+-->
 
 ---
 
