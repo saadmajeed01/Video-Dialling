@@ -1,9 +1,8 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <!-- Title and Icon -->
-
     <title>Site Maintenance</title>
     <link rel="shortcut icon" href="../images/logo.svg" />
     <link rel="apple-touch-icon" href="../images/logo.svg" />
@@ -11,46 +10,28 @@
     <meta charset="utf-8" />
     <meta name="robots" content="noindex" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        body {
-            text-align: center;
-            padding: 20px;
-            font:
-                20px Helvetica,
-                sans-serif;
-            color: #333;
-        }
 
-        @media (min-width: 768px) {
-            body {
-                padding-top: 150px;
-            }
-        }
-
-        h1 {
-            font-size: 50px;
-        }
-
-        article {
-            display: block;
-            text-align: left;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        a {
-            color: #dc8100;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #333;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="../css/maintenance.css" />
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="container">
+            <div class="site-header-inner">
+                <div class="brand header-brand">
+                    <a href="/">
+                        <img class="header-logo-image" src="../images/logo.svg" alt="videodialling-webrtc-logo" />
+                    </a>
+                    <h3 class="hero-title title">
+                        Video Dialling
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <article>
         <h1>We&rsquo;ll be back soon!</h1>
         <div>
@@ -60,22 +41,38 @@
                 <a href="mailto:info@videodialling.com">contact us</a>, otherwise we&rsquo;ll be back online
                 shortly!
             </p>
-            
             <p>&mdash; The Video Dialling Team</p>
         </div>
+        <div class="centered-image">
+            <img src="../images/maintenance1.jpg" class="pulse" width="550" height="450" alt="Maintenance Image">
+        </div>
     </article>
-    <div class="centered-image">
-        <img src="../images/maintenance1.jpg" class="pulse" width="550" height="450">
-    </div>
-    
+
+    <footer id="footer" class="site-footer">
+        <div class="container">
+            <div class="site-footer-inner">
+                <div class="brand footer-brand">
+                    <a href="/">
+                        <img class="footer-logo-image" src="../images/logo.svg" alt="Logo" />
+                    </a>
+                    <div class="footer-title0">
+                        <h6 class="hero-title title">
+                            Video Dialling
+                        </h6>
+                    </div>
+                </div>
+
+                <h7 class="footer-title1">
+                    A project of averox.com
+                </h7>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="../js/Common.js"></script>
+    <script defer src="../js/landing.js"></script>
+    <script defer src="../js/newRoom.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
-<!--  
-	# Under maintenance custom page
-	error_page 500 502 503 504 /50X.html;
-	location = /maintenance.html {
-		root /usr/share/nginx/html;
-		internal;
-	}
-	-->
 
 </html>

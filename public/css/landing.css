@@ -551,6 +551,7 @@ h6,
 p {
     margin-top: 0;
     margin-bottom: auto;
+    text-align: justify;
 }
 
 dfn,
@@ -1311,7 +1312,7 @@ label {
     justify-content: center;
     padding: 16px 32px;
     height: 48px;
-    text-align: center;
+    text-align: center !important;
     white-space: nowrap;
 }
 
@@ -1357,6 +1358,11 @@ label {
     .button-wide-mobile {
         width: 100%;
         max-width: 280px;
+    }
+
+    .hero-title {
+
+        text-align: center;
     }
 }
 
@@ -1628,15 +1634,48 @@ label {
     text-align: justify;
 }
 
-.hero-paragraph-1 {
+.hero-paragraph {
     margin-right: 15px;
+    font-size: medium;
 }
+
+.hero-paragraph-2 {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: medium;
+}
+
+
 
 .centered-image {
     margin-top: 20px;
 }
 
-/* Media query for landscape screens */
+/* Button styles for portrait screens */
+/* General button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
+/* Button styles for portrait screens */
+@media (max-width: 767px) {
+    .button-primary.button-wide-mobile {
+        display: block;
+        width: 80%;
+        /* Adjust the width as needed */
+        margin: 0 auto;
+        /* Center the button */
+        margin-top: 20px;
+        /* Adjust margin as needed */
+    }
+}
+
+/* Additional styles for landscape screens */
 @media (min-width: 768px) {
     .hero-content {
         flex-direction: row;
@@ -1644,8 +1683,7 @@ label {
     }
 
     .centered-image {
-        margin-top: 0;
-        margin-left: auto;
+        
     }
 
     .hero-title {
@@ -1653,12 +1691,15 @@ label {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    
 }
-#pulse-1{
-        align-items: center;
-        margin-top: 30px;
-    }
+
+
+
+#pulse-1 {
+    align-items: center;
+    margin-top: 30px;
+}
+
 .centered-image {
     margin-top: 30;
     /* Remove margin when the image moves next to the text */
@@ -1688,6 +1729,7 @@ img {
     grid-row: 1;
     justify-self: center;
 }
+
 .hero-cta {
     margin: 0;
 }
@@ -1891,16 +1933,6 @@ img {
     overflow: hidden;
 }
 
-/* .cta-inner::before {
-    content: '';
-    position: absolute;
-    right: 98px;
-    top: -117px;
-    width: 160px;
-    height: 187px;
-    background-image: url('../images/cta-illustration.svg');
-    background-repeat: no-repeat;
-} */
 
 .cta-inner>* {
     position: relative;
@@ -2070,6 +2102,12 @@ main {
 .pulse {
     box-shadow: 0 0 0 rgba(120, 120, 120, 0.4);
     animation: pulse 4s infinite;
+}
+
+.pulse-1 {
+    margin-top: 20px;
+    text-align: center;
+
 }
 
 .pulse:hover {
