@@ -1,7 +1,6 @@
 html,
 body {
-    height: 100%;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@500&display=swap');
