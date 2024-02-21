@@ -1,4 +1,4 @@
-/* privacy.css */
+/* maintenance.css */
 body {
     text-align: center;
     font: 20px 'IBM Plex Sans', sans-serif;
@@ -25,8 +25,16 @@ h1 {
 }
 
 p {
-    margin-bottom: 1.5em;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: medium;
     text-align: justify;
+    margin-bottom: auto;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #C9CACC;
+    font-size: 1rem;
+    line-height: 25px;
+    display: block;
 }
 
 a {
@@ -39,10 +47,26 @@ a:hover {
     text-decoration: none;
 }
 
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
 .centered-image {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    margin-top: 30;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    grid-row: 1;
+    justify-self: center;
+    box-sizing: inherit;
 }
 
 .pulse {
@@ -55,13 +79,20 @@ a:hover {
     /* Styles for portrait screens */
     .centered-image {
         margin-top: 0;
+
     }
 
     .centered-image img {
-        max-width: 100%;
-        /* Ensure the image doesn't exceed the container width */
-        height: auto;
         /* Maintain the aspect ratio */
+        margin-top: 35px;
+        display: flex;
+        justify-content: center;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+        grid-row: 1;
+        justify-self: center;
+        box-sizing: inherit;
     }
 }
 
@@ -83,8 +114,8 @@ a:hover {
 .brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    /* Adjusted to center the logo and text */
+    justify-content: flex-start;
+    /* Adjusted to align logo to the left */
     margin-bottom: 20px;
     /* Adjusted margin */
 }
@@ -107,16 +138,4 @@ a:hover {
 .footer-title0 {
     margin-left: 10px;
     /* Adjust the spacing between logo and text */
-}
-
-/* Additional styles for the privacy page */
-.hero-copy {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.button-primary {
-    text-align: center;
-    display: block;
-    margin: 20px auto;
 }

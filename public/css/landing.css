@@ -1682,9 +1682,6 @@ label {
         justify-content: space-between;
     }
 
-    .centered-image {
-        
-    }
 
     .hero-title {
         white-space: nowrap;
@@ -1749,8 +1746,6 @@ img {
     width: auto;
 }
 }
-
-
 
 .features-wrap {
     display: flex;
