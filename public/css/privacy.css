@@ -1,0 +1,122 @@
+/* privacy.css */
+body {
+    text-align: center;
+    font: 20px 'IBM Plex Sans', sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 40px;
+    }
+}
+
+article {
+    display: block;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: medium;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+}
+
+a {
+    color: #dc8100;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.centered-image {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 640px) {
+
+    /* Styles for portrait screens */
+    .centered-image {
+        margin-top: 0;
+    }
+
+    .centered-image img {
+        max-width: 100%;
+        /* Ensure the image doesn't exceed the container width */
+        height: auto;
+        /* Maintain the aspect ratio */
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Styles for the logo in the header and footer */
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Adjusted to center the logo and text */
+    margin-bottom: 20px;
+    /* Adjusted margin */
+}
+
+.header-logo-image,
+.footer-logo-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    padding-left: 0px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Adjusted to align logo to the left */
+}
+
+.footer-title0 {
+    margin-left: 10px;
+    /* Adjust the spacing between logo and text */
+}
+
+/* Additional styles for the privacy page */
+.hero-copy {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.button-primary {
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+}

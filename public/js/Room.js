@@ -2666,7 +2666,7 @@ function getCookie(cName) {
 function isHtml(str) {
     var a = document.createElement('div');
     a.innerHTML = str;
-    for (var c = a.childNodes, i = c.length; i--; ) {
+    for (var c = a.childNodes, i = c.length; i--;) {
         if (c[i].nodeType == 1) return true;
     }
     return false;
@@ -3658,33 +3658,34 @@ function showAbout() {
         imageUrl: image.about,
         customClass: { image: 'img-about' },
         position: 'center',
-        title: 'WebRTC SFU',
+        title: 'VideoDialling.com',
         html: `
         <br/>
-        <div id="about">
-            <button 
-                id="support-button" 
-                data-umami-event="Support button" 
-                class="pulsate" 
-                onclick="window.open('https://codecanyon.net/user/videodialling')">
-                <i class="fas fa-heart"></i> 
-                Support
-            </button>
-            <br /><br />
-            Author: <a 
-                id="linkedin-button" 
-                data-umami-event="Linkedin button" 
-                href="https://www.linkedin.com/in/videodialling-pejic-976a07101/" target="_blank"> 
-                Video Dialling
-            </a>
-            <br /><br />
-            Email:<a 
-                id="email-button" 
-                data-umami-event="Email button" 
-                href="mailto:info@videodialling.com?subject=Video Dialling info"> 
-                info@videodialling.com
-            </a>
-        </div>
+    <div id="about">
+        <button 
+        id="support-button" 
+        data-umami-event="Support button" 
+        class="pulsate" 
+        onclick="window.location.href='mailto:support@averox.com?subject=Video Dialling info';">
+        <i class="fas fa-heart"></i> 
+        Support
+        </button>
+    <br /><br />
+    Author: <a 
+        id="linkedin-button" 
+        data-umami-event="Linkedin button" 
+        href="https://www.linkedin.com/company/averox/" target="_blank"> 
+        Video Dialling
+        </a>
+    <br /><br />
+    Email:<a 
+        id="email-button" 
+        data-umami-event="Email button" 
+        href="mailto:support@averox.com?subject=Video Dialling info"> 
+        support@averox.com
+        </a>
+    </div>
+
         `,
         showClass: { popup: 'animate__animated animate__fadeInDown' },
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
