@@ -25,16 +25,8 @@ h1 {
 }
 
 p {
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: medium;
+    margin-bottom: 1.5em;
     text-align: justify;
-    margin-bottom: auto;
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: #C9CACC;
-    font-size: 1rem;
-    line-height: 25px;
-    display: block;
 }
 
 a {
@@ -48,30 +40,19 @@ a:hover {
 }
 
 .button {
+    margin-top: 10px;
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
     color: #ffffff;
     background-color: #007bff;
     border-radius: 5px;
-}
+  }
 
 .centered-image {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    margin-top: 30;
-    height: auto;
-    max-width: 100%;
-    vertical-align: middle;
-    grid-row: 1;
-    justify-self: center;
-    box-sizing: inherit;
-}
-
-.pulse {
-    animation: pulse 1.5s infinite;
-    padding-bottom: 30px;
 }
 
 @media (max-width: 640px) {
@@ -79,20 +60,13 @@ a:hover {
     /* Styles for portrait screens */
     .centered-image {
         margin-top: 0;
-
     }
 
     .centered-image img {
-        /* Maintain the aspect ratio */
-        margin-top: 35px;
-        display: flex;
-        justify-content: center;
-        height: auto;
         max-width: 100%;
-        vertical-align: middle;
-        grid-row: 1;
-        justify-self: center;
-        box-sizing: inherit;
+        /* Ensure the image doesn't exceed the container width */
+        height: auto;
+        /* Maintain the aspect ratio */
     }
 }
 
