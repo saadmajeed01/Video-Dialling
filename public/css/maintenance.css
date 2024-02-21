@@ -1,3 +1,9 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     text-align: center;
     font: 20px 'IBM Plex Sans', sans-serif;
@@ -51,6 +57,7 @@ a:hover {
 }
 
 @media (max-width: 640px) {
+
     /* Styles for portrait screens */
     .centered-image {
         margin-top: 0;
