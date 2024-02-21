@@ -297,7 +297,7 @@ dd {
 img {
     height: auto;
     max-width: 100%;
-    vertical-align: middle;
+    vertical-align: -160px;
 }
 
 .rounded-image {
@@ -534,8 +534,8 @@ h2,
 
 h3,
 .h3 {
-    margin-top: 36px;
-    margin-bottom: 12px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 h4,
@@ -544,8 +544,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-    margin-top: 24px;
-    margin-bottom: 4px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 p {
@@ -1645,12 +1645,6 @@ label {
     font-size: medium;
 }
 
-
-
-.centered-image {
-    margin-top: 20px;
-}
-
 /* Button styles for portrait screens */
 /* General button styles */
 .button {
@@ -2422,5 +2416,75 @@ main {
 .footer-title1 {
     background-color: #FFFFFF;
     color: lightslategray;
-    margin-top: 25px;
+    margin-top: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    text-align: center !important;
+    font: 20px 'IBM Plex Sans', sans-serif !important;
+    color: #333 !important;
+    padding: 20px !important;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 40px !important;
+    }
+}
+
+@media (max-width: 640px) {
+
+    /* Styles for portrait screens */
+    .centered-image {
+        margin-top: 0 !important;
+    }
+
+    .centered-image img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* Styles for the logo in the header and footer */
+.brand {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin-bottom: 20px !important;
+}
+
+.header-logo-image,
+.footer-logo-image {
+    width: 50px !important;
+    height: auto !important;
+    margin-right: 10px !important;
+    padding-left: 0px !important;
+}
+
+.footer-brand {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+.footer-title0 {
+    margin-left: 10px !important;
 }

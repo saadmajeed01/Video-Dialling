@@ -101,8 +101,5 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-}
-
-.footer-title0 {
-    margin-left: 10px;
+    margin-left: 10px; /* Adjusted to align the text with the logo */
 }

@@ -1,7 +1,7 @@
 {
     "name": "videodialling",
     "version": "1.3.66",
-    "description": "WebRTC SFU browser-based video calls",
+    "description": " Video Dialling browser-based video calls",
     "main": "Server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,10 +22,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/videodialling/videodialling"
+        "url": "https://github.com/saadmajeed01/Video-Dialling"
     },
     "keywords": [
-        "webrtc",
+        "videodialling",
         "socket.io",
         "broadcasting",
         "sfu",

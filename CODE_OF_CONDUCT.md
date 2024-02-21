@@ -103,7 +103,7 @@ For answers to common questions about this code of conduct, see the FAQ at
 [videodialling-covenant-home]: https://www.videodialling-covenant.org
 [v1.4]: https://www.videodialling-covenant.org/version/1/4/code-of-conduct.html
 [golang-coc]: https://golang.org/conduct
-[cncf-coc]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
+[cncf-coc]: https://github.com/saadmajeed01/Video-Dialling
 [microsoft-coc]: https://opensource.microsoft.com/codeofconduct/
 [FAQ]: https://www.videodialling-covenant.org/faq
 [translations]: https://www.videodialling-covenant.org/translations

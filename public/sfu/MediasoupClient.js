@@ -395,7 +395,7 @@
                             }
 
                             // Is webkit? http://stackoverflow.com/a/16459606/376773
-                            // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+                            // document is undefined in react-native: https://github.com/saadmajeed01/Video-Dialling
                             return (
                                 (typeof document !== 'undefined' &&
                                     document.documentElement &&
@@ -953,12 +953,12 @@
                 //
                 // TODO: The default should really be profile Baseline and level 1 according to
                 // the spec: https://tools.ietf.org/html/rfc6184#section-8.1. In order to not
-                // break backwards compatibility with older versions of WebRTC where external
+                // break backwards compatibility with older versions of videodialling where external
                 // codecs don't have any parameters, use profile ConstrainedBaseline level 3_1
                 // instead. This workaround will only be done in an interim period to allow
                 // external clients to update their code.
                 //
-                // http://crbug/webrtc/6337.
+                // http://crbug/videodialling/6337.
                 const DefaultProfileLevelId = new ProfileLevelId(Profile.ConstrainedBaseline, Level.L3_1);
                 /**
                  * Class for matching bit patterns such as "x1xx0000" where 'x' is allowed to
@@ -1966,13 +1966,13 @@
                 const logger = new Logger_1.Logger('Device');
                 function detectDevice() {
                     // React-Native.
-                    // NOTE: react-native-webrtc >= 1.75.0 is required.
-                    // NOTE: react-native-webrtc with Unified Plan requires version >= 106.0.0.
+                    // NOTE: react-native-videodialling >= 1.75.0 is required.
+                    // NOTE: react-native-videodialling with Unified Plan requires version >= 106.0.0.
                     if (typeof navigator === 'object' && navigator.product === 'ReactNative') {
                         logger.debug('detectDevice() | React-Native detected');
                         if (typeof RTCPeerConnection === 'undefined') {
                             logger.warn(
-                                'detectDevice() | unsupported react-native-webrtc without RTCPeerConnection, forgot to call registerGlobals()?',
+                                'detectDevice() | unsupported react-native-videodialling without RTCPeerConnection, forgot to call registerGlobals()?',
                             );
                             return undefined;
                         }
@@ -3967,7 +3967,7 @@
                             const nativeRtpCapabilities = sdpCommonUtils.extractRtpCapabilities({
                                 sdpObject,
                             });
-                            // libwebrtc supports NACK for OPUS but doesn't announce it.
+                            // libvideodialling supports NACK for OPUS but doesn't announce it.
                             ortcUtils.addNackSuppportForOpus(nativeRtpCapabilities);
                             return nativeRtpCapabilities;
                         } catch (error) {
@@ -4106,7 +4106,7 @@
                                 encoding.rid = `r${idx}`;
                             });
                             // Set rid and verify scalabilityMode in each encoding.
-                            // NOTE: Even if WebRTC allows different scalabilityMode (different number
+                            // NOTE: Even if videodialling allows different scalabilityMode (different number
                             // of temporal layers) per simulcast stream, we need that those are the
                             // same in all them, so let's pick up the highest value.
                             // NOTE: If scalabilityMode is not given, Chrome will use L1T3.
@@ -6647,7 +6647,7 @@
                             const nativeRtpCapabilities = sdpCommonUtils.extractRtpCapabilities({
                                 sdpObject,
                             });
-                            // libwebrtc supports NACK for OPUS but doesn't announce it.
+                            // libvideodialling supports NACK for OPUS but doesn't announce it.
                             ortcUtils.addNackSuppportForOpus(nativeRtpCapabilities);
                             return nativeRtpCapabilities;
                         } catch (error) {
@@ -8069,7 +8069,7 @@
                         sendingRemoteRtpParameters.codecs = ortc.reduceCodecs(sendingRemoteRtpParameters.codecs, codec);
                         // NOTE: Firefox fails sometimes to properly anticipate the closed media
                         // section that it should use, so don't reuse closed media sections.
-                        //   https://github.com/versatica/mediasoup-client/issues/104
+                        //   https://github.com/saadmajeed01/Video-Dialling
                         //
                         // const mediaSectionIdx = this._remoteSdp!.getNextMediaSectionIdx();
                         const transceiver = this._pc.addTransceiver(track, {
@@ -8656,7 +8656,7 @@
                         logger.debug('close()');
                         // Free/dispose native MediaStream but DO NOT free/dispose native
                         // MediaStreamTracks (that is parent's business).
-                        // @ts-ignore (proprietary API in react-native-webrtc).
+                        // @ts-ignore (proprietary API in react-native-videodialling).
                         this._sendStream.release(/* releaseTracks */ false);
                         // Close RTCPeerConnection.
                         if (this._pc) {
@@ -9014,12 +9014,12 @@
                             const mid = kind;
                             let streamId = options.streamId || rtpParameters.rtcp.cname;
                             // NOTE: In React-Native we cannot reuse the same remote MediaStream for new
-                            // remote tracks. This is because react-native-webrtc does not react on new
+                            // remote tracks. This is because react-native-videodialling does not react on new
                             // tracks generated within already existing streams, so force the streamId
                             // to be different. See:
-                            // https://github.com/react-native-webrtc/react-native-webrtc/issues/401
+                            // https://github.com/saadmajeed01/Video-Dialling
                             logger.debug(
-                                'receive() | forcing a random remote streamId to avoid well known bug in react-native-webrtc',
+                                'receive() | forcing a random remote streamId to avoid well known bug in react-native-videodialling',
                             );
                             streamId += `-hack-${utils.generateRandomNumber()}`;
                             mapStreamId.set(trackId, streamId);
@@ -9280,7 +9280,7 @@
                         this._closed = true;
                         // Free/dispose native MediaStream but DO NOT free/dispose native
                         // MediaStreamTracks (that is parent's business).
-                        // @ts-ignore (proprietary API in react-native-webrtc).
+                        // @ts-ignore (proprietary API in react-native-videodialling).
                         this._sendStream.release(/* releaseTracks */ false);
                         // Close RTCPeerConnection.
                         if (this._pc) {
@@ -9310,7 +9310,7 @@
                             const nativeRtpCapabilities = sdpCommonUtils.extractRtpCapabilities({
                                 sdpObject,
                             });
-                            // libwebrtc supports NACK for OPUS but doesn't announce it.
+                            // libvideodialling supports NACK for OPUS but doesn't announce it.
                             ortcUtils.addNackSuppportForOpus(nativeRtpCapabilities);
                             return nativeRtpCapabilities;
                         } catch (error) {
@@ -9494,16 +9494,16 @@
                         logger.debug('send() | calling pc.setLocalDescription() [offer:%o]', offer);
                         await this._pc.setLocalDescription(offer);
                         // We can now get the transceiver.mid.
-                        // NOTE: We cannot read generated MID on iOS react-native-webrtc 111.0.0
+                        // NOTE: We cannot read generated MID on iOS react-native-videodialling 111.0.0
                         // because transceiver.mid is not available until setRemoteDescription()
                         // is called, so this is best effort.
-                        // Issue: https://github.com/react-native-webrtc/react-native-webrtc/issues/1404
+                        // Issue: https://github.com/saadmajeed01/Video-Dialling
                         // NOTE: So let's fill MID in sendingRtpParameters later.
-                        // NOTE: This is fixed in react-native-webrtc 111.0.3.
+                        // NOTE: This is fixed in react-native-videodialling 111.0.3.
                         let localId = transceiver.mid ?? undefined;
                         if (!localId) {
                             logger.warn(
-                                'send() | missing transceiver.mid (bug in react-native-webrtc, using a workaround',
+                                'send() | missing transceiver.mid (bug in react-native-videodialling, using a workaround',
                             );
                         }
                         // Set MID.
@@ -9564,9 +9564,9 @@
                         const answer = { type: 'answer', sdp: this._remoteSdp.getSdp() };
                         logger.debug('send() | calling pc.setRemoteDescription() [answer:%o]', answer);
                         await this._pc.setRemoteDescription(answer);
-                        // Follow up of iOS react-native-webrtc 111.0.0 issue told above. Now yes,
+                        // Follow up of iOS react-native-videodialling 111.0.0 issue told above. Now yes,
                         // we can read generated MID (if not done above) and fill sendingRtpParameters.
-                        // NOTE: This is fixed in react-native-webrtc 111.0.3 so this block isn't
+                        // NOTE: This is fixed in react-native-videodialling 111.0.3 so this block isn't
                         // needed starting from that version.
                         if (!localId) {
                             localId = transceiver.mid;
@@ -10738,7 +10738,7 @@
                             const nativeRtpCapabilities = sdpCommonUtils.extractRtpCapabilities({
                                 sdpObject,
                             });
-                            // libwebrtc supports NACK for OPUS but doesn't announce it.
+                            // libvideodialling supports NACK for OPUS but doesn't announce it.
                             ortcUtils.addNackSuppportForOpus(nativeRtpCapabilities);
                             return nativeRtpCapabilities;
                         } catch (error) {
@@ -11815,7 +11815,7 @@
                             case 'application': {
                                 // New spec.
                                 if (typeof offerMediaObject.sctpPort === 'number') {
-                                    this._mediaObject.payloads = 'webrtc-datachannel';
+                                    this._mediaObject.payloads = 'videodialling-datachannel';
                                     this._mediaObject.sctpPort = sctpParameters.port;
                                     this._mediaObject.maxMessageSize = sctpParameters.maxMessageSize;
                                 }
@@ -11823,7 +11823,7 @@
                                 else if (offerMediaObject.sctpmap) {
                                     this._mediaObject.payloads = sctpParameters.port;
                                     this._mediaObject.sctpmap = {
-                                        app: 'webrtc-datachannel',
+                                        app: 'videodialling-datachannel',
                                         sctpmapNumber: sctpParameters.port,
                                         maxMessageSize: sctpParameters.maxMessageSize,
                                     };
@@ -12008,7 +12008,7 @@
                             case 'application': {
                                 // New spec.
                                 if (!oldDataChannelSpec) {
-                                    this._mediaObject.payloads = 'webrtc-datachannel';
+                                    this._mediaObject.payloads = 'videodialling-datachannel';
                                     this._mediaObject.sctpPort = sctpParameters.port;
                                     this._mediaObject.maxMessageSize = sctpParameters.maxMessageSize;
                                 }
@@ -12016,7 +12016,7 @@
                                 else {
                                     this._mediaObject.payloads = sctpParameters.port;
                                     this._mediaObject.sctpmap = {
-                                        app: 'webrtc-datachannel',
+                                        app: 'videodialling-datachannel',
                                         sctpmapNumber: sctpParameters.port,
                                         maxMessageSize: sctpParameters.maxMessageSize,
                                     };
@@ -12222,7 +12222,7 @@
                         if (iceParameters && iceParameters.iceLite) {
                             this._sdpObject.icelite = 'ice-lite';
                         }
-                        // If DTLS parameters are given, assume WebRTC and BUNDLE.
+                        // If DTLS parameters are given, assume videodialling and BUNDLE.
                         if (dtlsParameters) {
                             this._sdpObject.msidSemantic = { semantic: 'WMS', token: '*' };
                             // NOTE: We take the latest fingerprint.
@@ -13909,7 +13909,7 @@
                         }
                     } else if (
                         rtpParameters.headerExtensions.some(
-                            (ext) => ext.uri === 'http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time',
+                            (ext) => ext.uri === 'http://www.videodialling.org/experiments/rtp-hdrext/abs-send-time',
                         )
                     ) {
                         for (const codec of rtpParameters.codecs) {
@@ -14719,7 +14719,7 @@
                             reg: /^(rtcp-rsize)/,
                         },
                         {
-                            // a=sctpmap:5000 webrtc-datachannel 1024
+                            // a=sctpmap:5000 videodialling-datachannel 1024
                             name: 'sctpmap',
                             reg: /^sctpmap:([\w_/]*) (\S*)(?: (\S*))?/,
                             names: ['sctpmapNumber', 'app', 'maxMessageSize'],
@@ -15187,7 +15187,7 @@
    Detect Browser, Engine, OS, CPU, and Device type/model from User-Agent data.
    Supports browser & node.js environment. 
    Demo   : https://faisalman.github.io/ua-parser-js
-   Source : https://github.com/faisalman/ua-parser-js */
+   Source : https://github.com/saadmajeed01/Video-Dialling */
                 /////////////////////////////////////////////////////////////////////////////////
 
                 (function (window, undefined) {

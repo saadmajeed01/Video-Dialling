@@ -2,7 +2,7 @@
 
 <br />
 
-<p align="center">Free WebRTC - SFU - Simple, Secure, Scalable Real-Time Video Conferences with support for up to 4k resolution. It's compatible with all major browsers and platforms</p>
+<p align="center">Free videodialling - SFU - Simple, Secure, Scalable Real-Time Video Conferences with support for up to 4k resolution. It's compatible with all major browsers and platforms</p>
 
 <hr />
 
@@ -339,7 +339,7 @@ Try also [videodialling BRO](https://github.com/videodialling/videodiallingbro) 
 
 <br>
 
-Try also [videodialling WEB](https://github.com/videodialling/videodiallingwebrtc) a platform that allows for the management of an `unlimited number of users`. Each user must register with their email, username, and password, after which they gain access to their `personal dashboard`. Within the dashboard, users can `manage their rooms and schedule meetings` using the desired version of videodialling on a specified date and time. Invitations to these meetings can be sent via email, shared through the web browser, or sent via SMS.
+Try also [videodialling WEB](https://github.com/videodialling/videodiallingvideodialling) a platform that allows for the management of an `unlimited number of users`. Each user must register with their email, username, and password, after which they gain access to their `personal dashboard`. Within the dashboard, users can `manage their rooms and schedule meetings` using the desired version of videodialling on a specified date and time. Invitations to these meetings can be sent via email, shared through the web browser, or sent via SMS.
 
 </details>
 -->

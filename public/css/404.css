@@ -4,6 +4,9 @@ body {
     color: #333;
     padding: 20px;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
 }
 
 @media (min-width: 768px) {
@@ -12,50 +15,9 @@ body {
     }
 }
 
-article {
-    display: block;
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto;
-    font-size: medium;
-}
-
-h1 {
-    font-size: 2em;
-}
-
-p {
-    margin-bottom: 1.5em;
-    text-align: justify;
-}
-
-a {
-    color: #dc8100;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #333;
-    text-decoration: none;
-}
-
-.button {
-    margin-top: 10px;
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #007bff;
-    border-radius: 5px;
-}
-
-.centered-image {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
 @media (max-width: 640px) {
+
+    /* Styles for portrait screens */
     .centered-image {
         margin-top: 0;
     }
@@ -66,23 +28,8 @@ a:hover {
     }
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
 /* Styles for the logo in the header and footer */
-.brand,
-.footer-brand {
+.brand {
     display: flex;
     align-items: center;
     justify-content: flex-start;

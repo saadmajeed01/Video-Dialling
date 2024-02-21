@@ -210,13 +210,13 @@ module.exports = class Room {
     }
 
     // ####################################################
-    // WEBRTC TRANSPORT
+    // videodialling TRANSPORT
     // ####################################################
 
-    async createWebRtcTransport(socket_id) {
-        const { maxIncomingBitrate, initialAvailableOutgoingBitrate, listenIps } = config.mediasoup.webRtcTransport;
+    async createvideodiallingTransport(socket_id) {
+        const { maxIncomingBitrate, initialAvailableOutgoingBitrate, listenIps } = config.mediasoup.videodiallingTransport;
 
-        const transport = await this.router.createWebRtcTransport({
+        const transport = await this.router.createvideodiallingTransport({
             listenIps: listenIps,
             enableUdp: true,
             enableTcp: true,

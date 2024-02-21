@@ -4,6 +4,10 @@ body {
     color: #333;
     padding: 20px;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensure the body takes at least the full height of the viewport */
 }
 
 @media (min-width: 768px) {
@@ -12,45 +16,8 @@ body {
     }
 }
 
-article {
-    display: block;
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto;
-    font-size: medium;
-}
-
-h1 {
-    font-size: 2em;
-}
-
-p {
-    margin-bottom: 1.5em;
-    text-align: justify;
-}
-
-a {
-    color: #dc8100;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #333;
-    text-decoration: none;
-}
-
-.centered-image {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.pulse {
-    animation: pulse 1.5s infinite;
-    padding-bottom: 30px;
-}
-
 @media (max-width: 640px) {
+
     /* Styles for portrait screens */
     .centered-image {
         margin-top: 0;
@@ -59,20 +26,6 @@ a:hover {
     .centered-image img {
         max-width: 100%;
         height: auto;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 

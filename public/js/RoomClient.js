@@ -3,11 +3,11 @@
 /**
  * Video Dialling - Client component
  *
- * @link    GitHub: https://github.com/videodialling/videodialling
+ * @link    GitHub: https://github.com/saadmajeed01/Video-Dialling
  * @link    Official Live demo: https://sfu.videodialling.com
  * @license For open source use: AGPLv3
  * @license For commercial or closed source, contact us at license.videodialling@gmail.com or purchase directly via CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-webrtc-realtime-video-conferences/40769970
+ * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-videodialling-realtime-video-conferences/40769970
  * @author  Video Dialling - info@videodialling.com
  * @version 1.3.66
  *
@@ -517,13 +517,13 @@ class RoomClient {
 
     async initTransports(device) {
         {
-            const data = await this.socket.request('createWebRtcTransport', {
+            const data = await this.socket.request('createvideodiallingTransport', {
                 forceTcp: false,
                 rtpCapabilities: device.rtpCapabilities,
             });
 
             if (data.error) {
-                return console.error('Create WebRtc Transport for Producer err: ', data.error);
+                return console.error('Create videodialling Transport for Producer err: ', data.error);
             }
 
             this.producerTransport = device.createSendTransport(data);
@@ -600,12 +600,12 @@ class RoomClient {
         // ####################################################
 
         {
-            const data = await this.socket.request('createWebRtcTransport', {
+            const data = await this.socket.request('createvideodiallingTransport', {
                 forceTcp: false,
             });
 
             if (data.error) {
-                return console.error('Create WebRtc Transport for Consumer err: ', data.error);
+                return console.error('Create videodialling Transport for Consumer err: ', data.error);
             }
 
             this.consumerTransport = device.createRecvTransport(data);

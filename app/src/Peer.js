@@ -164,7 +164,7 @@ module.exports = class Peer {
 
         const consumerType = consumer.type;
 
-        // https://www.w3.org/TR/webrtc-svc/#scalabilitymodes*
+        // https://www.w3.org/TR/videodialling-svc/#scalabilitymodes*
 
         if (['simulcast', 'svc'].includes(consumerType)) {
             // simulcast - L1T3/L2T3/L3T3 | svc - L3T3

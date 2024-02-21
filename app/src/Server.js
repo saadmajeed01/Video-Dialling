@@ -35,11 +35,11 @@ dependencies: {
 /**
  * videodialling - Server component
  *
- * @link    GitHub: https://github.com/videodialling/videodialling
+ * @link    GitHub: https://github.com/saadmajeed01/Video-Dialling
  * @link    Official Live demo: https://sfu.videodialling.com
  * @license For open source use: AGPLv3
  * @license For commercial or closed source, contact us at license.videodialling@gmail.com or purchase directly via CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-webrtc-realtime-video-conferences/40769970
+ * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-videodialling-realtime-video-conferences/40769970
  * @author  Video Dialling - info@videodialling.com
  * @version 1.3.66
  *
@@ -178,7 +178,7 @@ let roomList = new Map(); // All Rooms
 
 let presenters = {}; // collect presenters grp by roomId
 
-let announcedIP = config.mediasoup.webRtcTransport.listenIps[0].announcedIp; // AnnouncedIP (server public IPv4)
+let announcedIP = config.mediasoup.videodiallingTransport.listenIps[0].announcedIp; // AnnouncedIP (server public IPv4)
 
 // All mediasoup workers
 let workers = [];
@@ -195,7 +195,7 @@ if (!announcedIP) {
         (resp) => {
             resp.on('data', (ip) => {
                 announcedIP = ip.toString();
-                config.mediasoup.webRtcTransport.listenIps[0].announcedIp = announcedIP;
+                config.mediasoup.videodiallingTransport.listenIps[0].announcedIp = announcedIP;
                 startServer();
             });
         },
@@ -1175,19 +1175,19 @@ function startServer() {
             socket.emit('newProducers', producerList);
         });
 
-        socket.on('createWebRtcTransport', async (_, callback) => {
+        socket.on('createvideodiallingTransport', async (_, callback) => {
             if (!roomList.has(socket.room_id)) {
                 return callback({ error: 'Room not found' });
             }
 
             const room = roomList.get(socket.room_id);
 
-            log.debug('Create webrtc transport', getPeerName(room));
+            log.debug('Create videodialling transport', getPeerName(room));
             try {
-                const { params } = await room.createWebRtcTransport(socket.id);
+                const { params } = await room.createvideodiallingTransport(socket.id);
                 callback(params);
             } catch (err) {
-                log.error('Create WebRtc Transport error: ', err.message);
+                log.error('Create videodialling Transport error: ', err.message);
                 callback({
                     error: err.message,
                 });

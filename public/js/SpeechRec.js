@@ -75,7 +75,7 @@ const browser = {
     linkedin: 'https://www.linkedin.com',
     twitter: 'https://www.twitter.com',
     tiktok: 'https://www.tiktok.com',
-    github: 'https://github.com/videodialling',
+    github: 'https://github.com/saadmajeed01/Video-Dialling',
 };
 
 if (speechRecognition) {
