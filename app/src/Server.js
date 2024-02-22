@@ -33,13 +33,13 @@ dependencies: {
 */
 
 /**
- * MiroTalk SFU - Server component
+ * VideoDialling - Server component
  *
- * @link    GitHub: https://github.com/miroslavpejic85/mirotalksfu
- * @link    Official Live demo: https://sfu.mirotalk.com
+ * @link    GitHub: https://github.com/miroslavpejic85/videodialling
+ * @link    Official Live demo: https://sfu.videodialling.com
  * @license For open source use: AGPLv3
- * @license For commercial or closed source, contact us at license.mirotalk@gmail.com or purchase directly via CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/mirotalk-sfu-webrtc-realtime-video-conferences/40769970
+ * @license For commercial or closed source, contact us at license.videodialling@gmail.com or purchase directly via CodeCanyon
+ * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-webrtc-realtime-video-conferences/40769970
  * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
  * @version 1.3.68
  *
@@ -95,7 +95,7 @@ const io = require('socket.io')(httpsServer, {
 const host = 'https://' + 'localhost' + ':' + config.server.listen.port; // config.server.listen.ip
 
 const jwtCfg = {
-    JWT_KEY: (config.jwt && config.jwt.key) || 'mirotalksfu_jwt_secret',
+    JWT_KEY: (config.jwt && config.jwt.key) || 'videodialling_jwt_secret',
     JWT_EXP: (config.jwt && config.jwt.exp) || '1h',
 };
 
@@ -136,7 +136,7 @@ if (sentryEnabled) {
 // Stats
 const defaultStats = {
     enabled: true,
-    src: 'https://stats.mirotalk.com/script.js',
+    src: 'https://stats.videodialling.com/script.js',
     id: '41d26670-f275-45bb-af82-3ce91fe57756',
 };
 
@@ -299,8 +299,8 @@ function startServer() {
         if (Object.keys(req.query).length > 0) {
             log.debug('Direct Join', req.query);
 
-            // http://localhost:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=1
-            // http://localhost:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=0&token=token
+            // http://localhost:3010/join?room=test&roomPassword=0&name=videodialling&audio=1&video=1&screen=0&hide=0&notify=1
+            // http://localhost:3010/join?room=test&roomPassword=0&name=videodialling&audio=1&video=1&screen=0&hide=0&notify=0&token=token
 
             const { room, roomPassword, name, audio, video, screen, hide, notify, token, isPresenter } = checkXSS(
                 req.query,
@@ -376,7 +376,7 @@ function startServer() {
         res.sendFile(views.privacy);
     });
 
-    // mirotalk about
+    // videodialling about
     app.get(['/about'], (req, res) => {
         res.sendFile(views.about);
     });
@@ -493,7 +493,7 @@ function startServer() {
         let authorization = req.headers.authorization;
         let api = new ServerApi(host, authorization);
         if (!api.isAuthorized()) {
-            log.debug('MiroTalk get meeting - Unauthorized', {
+            log.debug('videodialling get meeting - Unauthorized', {
                 header: req.headers,
                 body: req.body,
             });
@@ -504,7 +504,7 @@ function startServer() {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ meeting: meetingURL }));
         // log.debug the output if all done
-        log.debug('MiroTalk get meeting - Authorized', {
+        log.debug('videodialling get meeting - Authorized', {
             header: req.headers,
             body: req.body,
             meeting: meetingURL,
@@ -518,7 +518,7 @@ function startServer() {
         let authorization = req.headers.authorization;
         let api = new ServerApi(host, authorization);
         if (!api.isAuthorized()) {
-            log.debug('MiroTalk get join - Unauthorized', {
+            log.debug('videodialling get join - Unauthorized', {
                 header: req.headers,
                 body: req.body,
             });
@@ -529,7 +529,7 @@ function startServer() {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ join: joinURL }));
         // log.debug the output if all done
-        log.debug('MiroTalk get join - Authorized', {
+        log.debug('videodialling get join - Authorized', {
             header: req.headers,
             body: req.body,
             join: joinURL,

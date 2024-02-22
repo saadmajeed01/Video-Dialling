@@ -1,13 +1,13 @@
 'use strict';
 
 /**
- * MiroTalk SFU - Client component
+ * VideoDialling - Client component
  *
- * @link    GitHub: https://github.com/miroslavpejic85/mirotalksfu
- * @link    Official Live demo: https://sfu.mirotalk.com
+ * @link    GitHub: https://github.com/miroslavpejic85/videodialling
+ * @link    Official Live demo: https://sfu.videodialling.com
  * @license For open source use: AGPLv3
- * @license For commercial or closed source, contact us at license.mirotalk@gmail.com or purchase directly via CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/mirotalk-sfu-webrtc-realtime-video-conferences/40769970
+ * @license For commercial or closed source, contact us at license.videodialling@gmail.com or purchase directly via CodeCanyon
+ * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-webrtc-realtime-video-conferences/40769970
  * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
  * @version 1.3.68
  *
@@ -67,8 +67,8 @@ const icons = {
 };
 
 const image = {
-    about: '../images/mirotalk-logo.gif',
-    avatar: '../images/mirotalksfu-logo.png',
+    about: '../images/videodialling-logo.gif',
+    avatar: '../images/videodialling-logo.png',
     audio: '../images/audio.gif',
     poster: '../images/loader.gif',
     rec: '../images/rec.png',
@@ -4436,7 +4436,7 @@ class RoomClient {
         Swal.fire({
             allowOutsideClick: false,
             background: swalBackground,
-            imageAlt: 'mirotalksfu-file-sharing',
+            imageAlt: 'videodialling-file-sharing',
             imageUrl: image.share,
             position: 'center',
             title: 'Share file',
@@ -4663,7 +4663,7 @@ class RoomClient {
                     title: 'Received file',
                     text: this.incomingFileInfo.fileName + ' size ' + this.bytesToSize(this.incomingFileInfo.fileSize),
                     imageUrl: e.target.result,
-                    imageAlt: 'mirotalksfu-file-img-download',
+                    imageAlt: 'videodialling-file-img-download',
                     showDenyButton: true,
                     confirmButtonText: `Save`,
                     denyButtonText: `Cancel`,

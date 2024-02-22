@@ -70,7 +70,7 @@ module.exports = {
             JWT https://jwt.io/
             Securely manages credentials for host configurations and user authentication, enhancing security and streamlining processes.
          */
-        key: 'mirotalksfu_jwt_secret',
+        key: 'videodialling_jwt_secret',
         exp: '1h',
     },
     presenters: {
@@ -197,7 +197,7 @@ module.exports = {
     },
     api: {
         // app/api
-        keySecret: 'mirotalksfu_default_secret',
+        keySecret: 'videodialling_default_secret',
     },
     sentry: {
         /*
@@ -270,7 +270,7 @@ module.exports = {
             We use our Self-hosted Umami to track aggregated usage statistics in order to improve our service.
         */
         enabled: true,
-        src: 'https://stats.mirotalk.com/script.js',
+        src: 'https://stats.videodialling.com/script.js',
         id: '41d26670-f275-45bb-af82-3ce91fe57756',
     },
     mediasoup: {
