@@ -35,6 +35,15 @@ module.exports = {
             cert: '../ssl/cert.pem',
             key: '../ssl/key.pem',
         },
+        /*
+            The recording will be saved to the directory designated within your Server app/<dir>
+            Note: if you use Docker: Create the "app/rec" directory, configure it as a volume in docker-compose.yml, 
+            ensure proper permissions, and start the Docker container.
+        */
+        recording: {
+            dir: 'rec',
+            enabled: false,
+        },
     },
     host: {
         /*
@@ -61,7 +70,7 @@ module.exports = {
             JWT https://jwt.io/
             Securely manages credentials for host configurations and user authentication, enhancing security and streamlining processes.
          */
-        key: 'videodialling_jwt_secret',
+        key: 'mirotalksfu_jwt_secret',
         exp: '1h',
     },
     presenters: {
@@ -70,10 +79,97 @@ module.exports = {
                 By default, the presenter is identified as the first participant to join the room, distinguished by their username and UUID. 
                 Additional layers can be added to specify valid presenters and co-presenters by setting designated usernames.
             */
-            'videodialling',
-            'info@videodialling.com',
+            'Miroslav Pejic',
+            'miroslav.pejic.85@gmail.com',
         ],
         join_first: true, // Set to true for traditional behavior, false to prioritize presenters
+    },
+    ui: {
+        /*
+            Toggle the visibility of specific HTML elements within the room
+        */
+        buttons: {
+            main: {
+                shareButton: true,
+                hideMeButton: true,
+                startAudioButton: true,
+                startVideoButton: true,
+                startScreenButton: true,
+                swapCameraButton: true,
+                chatButton: true,
+                raiseHandButton: true,
+                transcriptionButton: true,
+                whiteboardButton: true,
+                emojiRoomButton: true,
+                settingsButton: true,
+                aboutButton: true, // Please keep me always visible, thank you!
+                exitButton: true,
+            },
+            settings: {
+                fileSharing: true,
+                lockRoomButton: true, // presenter
+                unlockRoomButton: true, // presenter
+                broadcastingButton: true, // presenter
+                lobbyButton: true, // presenter
+                micOptionsButton: true, // presenter
+                tabModerator: true, // presenter
+                tabRecording: true,
+                host_only_recording: true, // presenter
+                pushToTalk: true,
+            },
+            producerVideo: {
+                videoPictureInPicture: true,
+                fullScreenButton: true,
+                snapShotButton: true,
+                muteAudioButton: true,
+                videoPrivacyButton: true,
+            },
+            consumerVideo: {
+                videoPictureInPicture: true,
+                fullScreenButton: true,
+                snapShotButton: true,
+                sendMessageButton: true,
+                sendFileButton: true,
+                sendVideoButton: true,
+                muteVideoButton: true,
+                muteAudioButton: true,
+                audioVolumeInput: true, // Disabled for mobile
+                geolocationButton: true, // Presenter
+                banButton: true, // presenter
+                ejectButton: true, // presenter
+            },
+            videoOff: {
+                sendMessageButton: true,
+                sendFileButton: true,
+                sendVideoButton: true,
+                muteAudioButton: true,
+                audioVolumeInput: true, // Disabled for mobile
+                geolocationButton: true, // Presenter
+                banButton: true, // presenter
+                ejectButton: true, // presenter
+            },
+            chat: {
+                chatPinButton: true,
+                chatMaxButton: true,
+                chatSaveButton: true,
+                chatEmojiButton: true,
+                chatMarkdownButton: true,
+                chatSpeechStartButton: true,
+            },
+            participantsList: {
+                saveInfoButton: true, // presenter
+                sendFileAllButton: true, // presenter
+                ejectAllButton: true, // presenter
+                sendFileButton: true, // presenter & guests
+                geoLocationButton: true, // presenter
+                banButton: true, // presenter
+                ejectButton: true, // presenter
+            },
+            whiteboard: {
+                whiteboardLockButton: true, // presenter
+            },
+            //...
+        },
     },
     middleware: {
         /*
@@ -101,7 +197,7 @@ module.exports = {
     },
     api: {
         // app/api
-        keySecret: 'videodialling_default_secret',
+        keySecret: 'mirotalksfu_default_secret',
     },
     sentry: {
         /*
@@ -169,8 +265,12 @@ module.exports = {
         url: '',
     },
     stats: {
+        /*
+            Umami: https://github.com/umami-software/umami
+            We use our Self-hosted Umami to track aggregated usage statistics in order to improve our service.
+        */
         enabled: true,
-        src: 'https://stats.videodialling.com/script.js',
+        src: 'https://stats.mirotalk.com/script.js',
         id: '41d26670-f275-45bb-af82-3ce91fe57756',
     },
     mediasoup: {
@@ -232,13 +332,14 @@ module.exports = {
                 },
             ],
         },
-        // videodiallingTransport settings
-        videodiallingTransport: {
-            listenIps: [
+        // WebRtcTransport settings
+        webRtcTransport: {
+            listenInfos: [
                 {
+                    protocol: 'udp',
                     ip: '0.0.0.0',
-                    announcedIp: getLocalIp(), // replace by 'public static IPV4 address' https://api.ipify.org (type string --> 'xx.xxx.xxx.xx' not xx.xxx.xxx.xx)
-                }, //announcedIp: '' will be auto-detected on server start, for docker localPC set '127.0.0.1'
+                    announcedAddress: getLocalIp(), // replace by 'public static IPV4 address' https://api.ipify.org (type string --> 'xx.xxx.xxx.xx' not xx.xxx.xxx.xx)
+                }, //announcedAddress: '' will be auto-detected on server start, for docker localPC set '127.0.0.1' otherwise the 'public static IPV4 address'
             ],
             initialAvailableOutgoingBitrate: 1000000,
             minimumAvailableOutgoingBitrate: 600000,

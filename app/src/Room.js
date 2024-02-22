@@ -19,6 +19,9 @@ module.exports = class Room {
         this._isLobbyEnabled = false;
         this._roomPassword = null;
         this._hostOnlyRecording = false;
+        // ##########################
+        this._recSyncServerRecording = config?.server?.recording?.enabled || false;
+        // ##########################
         this._moderator = {
             audio_start_muted: false,
             video_start_hidden: false,
@@ -155,6 +158,7 @@ module.exports = class Room {
         return {
             id: this.id,
             broadcasting: this._isBroadcasting,
+            recSyncServerRecording: this._recSyncServerRecording,
             config: {
                 isLocked: this._isLocked,
                 isLobbyEnabled: this._isLobbyEnabled,
@@ -210,14 +214,14 @@ module.exports = class Room {
     }
 
     // ####################################################
-    // videodialling TRANSPORT
+    // WEBRTC TRANSPORT
     // ####################################################
 
-    async createvideodiallingTransport(socket_id) {
-        const { maxIncomingBitrate, initialAvailableOutgoingBitrate, listenIps } = config.mediasoup.videodiallingTransport;
+    async createWebRtcTransport(socket_id) {
+        const { maxIncomingBitrate, initialAvailableOutgoingBitrate, listenInfos } = config.mediasoup.webRtcTransport;
 
-        const transport = await this.router.createvideodiallingTransport({
-            listenIps: listenIps,
+        const transport = await this.router.createWebRtcTransport({
+            listenInfos: listenInfos,
             enableUdp: true,
             enableTcp: true,
             preferUdp: true,
@@ -227,7 +231,7 @@ module.exports = class Room {
         if (maxIncomingBitrate) {
             try {
                 await transport.setMaxIncomingBitrate(maxIncomingBitrate);
-            } catch (error) {}
+            } catch (error) { }
         }
 
         transport.on(

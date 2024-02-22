@@ -33,15 +33,15 @@ dependencies: {
 */
 
 /**
- * videodialling - Server component
+ * MiroTalk SFU - Server component
  *
- * @link    GitHub: https://github.com/saadmajeed01/Video-Dialling
- * @link    Official Live demo: https://sfu.videodialling.com
+ * @link    GitHub: https://github.com/miroslavpejic85/mirotalksfu
+ * @link    Official Live demo: https://sfu.mirotalk.com
  * @license For open source use: AGPLv3
- * @license For commercial or closed source, contact us at license.videodialling@gmail.com or purchase directly via CodeCanyon
- * @license CodeCanyon: https://codecanyon.net/item/videodialling-sfu-videodialling-realtime-video-conferences/40769970
- * @author  Video Dialling - info@videodialling.com
- * @version 1.3.66
+ * @license For commercial or closed source, contact us at license.mirotalk@gmail.com or purchase directly via CodeCanyon
+ * @license CodeCanyon: https://codecanyon.net/item/mirotalk-sfu-webrtc-realtime-video-conferences/40769970
+ * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
+ * @version 1.3.68
  *
  */
 
@@ -95,7 +95,7 @@ const io = require('socket.io')(httpsServer, {
 const host = 'https://' + 'localhost' + ':' + config.server.listen.port; // config.server.listen.ip
 
 const jwtCfg = {
-    JWT_KEY: (config.jwt && config.jwt.key) || 'videodialling_jwt_secret',
+    JWT_KEY: (config.jwt && config.jwt.key) || 'mirotalksfu_jwt_secret',
     JWT_EXP: (config.jwt && config.jwt.exp) || '1h',
 };
 
@@ -136,7 +136,7 @@ if (sentryEnabled) {
 // Stats
 const defaultStats = {
     enabled: true,
-    src: 'https://stats.videodialling.com/script.js',
+    src: 'https://stats.mirotalk.com/script.js',
     id: '41d26670-f275-45bb-af82-3ce91fe57756',
 };
 
@@ -158,7 +158,16 @@ if (config.chatGPT.enabled) {
 // directory
 const dir = {
     public: path.join(__dirname, '../../', 'public'),
+    rec: path.join(__dirname, '../', config?.server?.recording?.dir ? config.server.recording.dir + '/' : 'rec/'),
 };
+
+// rec directory create
+const serverRecordingEnabled = config?.server?.recording?.enabled;
+if (serverRecordingEnabled) {
+    if (!fs.existsSync(dir.rec)) {
+        fs.mkdirSync(dir.rec, { recursive: true });
+    }
+}
 
 // html views
 const views = {
@@ -178,14 +187,14 @@ let roomList = new Map(); // All Rooms
 
 let presenters = {}; // collect presenters grp by roomId
 
-let announcedIP = config.mediasoup.videodiallingTransport.listenIps[0].announcedIp; // AnnouncedIP (server public IPv4)
+let announcedAddress = config.mediasoup.webRtcTransport.listenInfos[0].announcedAddress; // announcedAddress (server public IPv4)
 
 // All mediasoup workers
 let workers = [];
 let nextMediasoupWorkerIdx = 0;
 
-// Autodetect announcedIP (https://www.ipify.org)
-if (!announcedIP) {
+// Autodetect announcedAddress (https://www.ipify.org)
+if (!announcedAddress) {
     http.get(
         {
             host: 'api.ipify.org',
@@ -194,8 +203,8 @@ if (!announcedIP) {
         },
         (resp) => {
             resp.on('data', (ip) => {
-                announcedIP = ip.toString();
-                config.mediasoup.videodiallingTransport.listenIps[0].announcedIp = announcedIP;
+                announcedAddress = ip.toString();
+                config.mediasoup.webRtcTransport.listenInfos[0].announcedAddress = announcedAddress;
                 startServer();
             });
         },
@@ -255,6 +264,11 @@ function startServer() {
         }
     });
 
+    // UI buttons configuration
+    app.get('/config', (req, res) => {
+        res.status(200).json({ message: config.ui ? config.ui.buttons : false });
+    });
+
     // main page
     app.get(['/'], (req, res) => {
         if (hostCfg.protected) {
@@ -285,8 +299,8 @@ function startServer() {
         if (Object.keys(req.query).length > 0) {
             log.debug('Direct Join', req.query);
 
-            // http://localhost:3010/join?room=test&roomPassword=0&name=videodialling&audio=1&video=1&screen=0&hide=0&notify=1
-            // http://localhost:3010/join?room=test&roomPassword=0&name=videodialling&audio=1&video=1&screen=0&hide=0&notify=0&token=token
+            // http://localhost:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=1
+            // http://localhost:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=0&token=token
 
             const { room, roomPassword, name, audio, video, screen, hide, notify, token, isPresenter } = checkXSS(
                 req.query,
@@ -362,7 +376,7 @@ function startServer() {
         res.sendFile(views.privacy);
     });
 
-    // videodialling about
+    // mirotalk about
     app.get(['/about'], (req, res) => {
         res.sendFile(views.about);
     });
@@ -430,6 +444,45 @@ function startServer() {
     });
 
     // ####################################################
+    // KEEP RECORDING ON SERVER DIR
+    // ####################################################
+
+    app.post(['/recSync'], (req, res) => {
+        // Store recording...
+        if (serverRecordingEnabled) {
+            //
+            const { fileName } = req.query;
+
+            if (!fileName) {
+                return res.status(400).send('Filename not provided');
+            }
+
+            try {
+                if (!fs.existsSync(dir.rec)) {
+                    fs.mkdirSync(dir.rec, { recursive: true });
+                }
+                const filePath = dir.rec + fileName;
+                const writeStream = fs.createWriteStream(filePath, { flags: 'a' });
+
+                req.pipe(writeStream);
+
+                writeStream.on('error', (err) => {
+                    log.error('Error writing to file:', err.message);
+                    res.status(500).send('Internal Server Error');
+                });
+
+                writeStream.on('finish', () => {
+                    log.debug('File saved successfully:', fileName);
+                    res.status(200).send('File uploaded successfully');
+                });
+            } catch (err) {
+                log.error('Error processing upload', err.message);
+                res.status(500).send('Internal Server Error');
+            }
+        }
+    });
+
+    // ####################################################
     // API
     // ####################################################
 
@@ -440,7 +493,7 @@ function startServer() {
         let authorization = req.headers.authorization;
         let api = new ServerApi(host, authorization);
         if (!api.isAuthorized()) {
-            log.debug('Video Dialling get meeting - Unauthorized', {
+            log.debug('MiroTalk get meeting - Unauthorized', {
                 header: req.headers,
                 body: req.body,
             });
@@ -451,7 +504,7 @@ function startServer() {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ meeting: meetingURL }));
         // log.debug the output if all done
-        log.debug('Video Dialling get meeting - Authorized', {
+        log.debug('MiroTalk get meeting - Authorized', {
             header: req.headers,
             body: req.body,
             meeting: meetingURL,
@@ -465,7 +518,7 @@ function startServer() {
         let authorization = req.headers.authorization;
         let api = new ServerApi(host, authorization);
         if (!api.isAuthorized()) {
-            log.debug('Video Dialling get join - Unauthorized', {
+            log.debug('MiroTalk get join - Unauthorized', {
                 header: req.headers,
                 body: req.body,
             });
@@ -476,7 +529,7 @@ function startServer() {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ join: joinURL }));
         // log.debug the output if all done
-        log.debug('Video Dialling get join - Authorized', {
+        log.debug('MiroTalk get join - Authorized', {
             header: req.headers,
             body: req.body,
             join: joinURL,
@@ -528,11 +581,8 @@ function startServer() {
             await ngrok.authtoken(config.ngrok.authToken);
             await ngrok.connect(config.server.listen.port);
             const api = ngrok.getApi();
-            // const data = JSON.parse(await api.get('api/tunnels')); // v3
-            const data = await api.listTunnels(); // v4
-            const pu0 = data.tunnels[0].public_url;
-            const pu1 = data.tunnels[1].public_url;
-            const tunnel = pu0.startsWith('https') ? pu0 : pu1;
+            const list = await api.listTunnels();
+            const tunnel = list.tunnels[0].public_url;
             log.info('Listening on', {
                 app_version: packageJson.version,
                 node_version: process.versions.node,
@@ -540,7 +590,7 @@ function startServer() {
                 jwtCfg: jwtCfg,
                 presenters: config.presenters,
                 middleware: config.middleware,
-                announced_ip: announcedIP,
+                announcedAddress: announcedAddress,
                 server: host,
                 server_tunnel: tunnel,
                 api_docs: api_docs,
@@ -553,9 +603,12 @@ function startServer() {
                 slack_enabled: slackEnabled,
                 stats_enabled: config.stats.enabled,
                 chatGPT_enabled: config.chatGPT.enabled,
+                configUI: config.ui,
+                serverRec: config?.server?.recording,
             });
         } catch (err) {
             log.error('Ngrok Start error: ', err.body);
+            await ngrok.kill();
             process.exit(1);
         }
     }
@@ -589,7 +642,7 @@ function startServer() {
             jwtCfg: jwtCfg,
             presenters: config.presenters,
             middleware: config.middleware,
-            announced_ip: announcedIP,
+            announcedAddress: announcedAddress,
             server: host,
             api_docs: api_docs,
             mediasoup_worker_bin: mediasoup.workerBin,
@@ -601,6 +654,8 @@ function startServer() {
             slack_enabled: slackEnabled,
             stats_enabled: config.stats.enabled,
             chatGPT_enabled: config.chatGPT.enabled,
+            configUI: config.ui,
+            serverRec: config?.server?.recording,
         });
     });
 
@@ -1175,19 +1230,19 @@ function startServer() {
             socket.emit('newProducers', producerList);
         });
 
-        socket.on('createvideodiallingTransport', async (_, callback) => {
+        socket.on('createWebRtcTransport', async (_, callback) => {
             if (!roomList.has(socket.room_id)) {
                 return callback({ error: 'Room not found' });
             }
 
             const room = roomList.get(socket.room_id);
 
-            log.debug('Create videodialling transport', getPeerName(room));
+            log.debug('Create webrtc transport', getPeerName(room));
             try {
-                const { params } = await room.createvideodiallingTransport(socket.id);
+                const { params } = await room.createWebRtcTransport(socket.id);
                 callback(params);
             } catch (err) {
-                log.error('Create videodialling Transport error: ', err.message);
+                log.error('Create WebRtc Transport error: ', err.message);
                 callback({
                     error: err.message,
                 });
