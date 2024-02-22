@@ -803,7 +803,6 @@ label {
     max-block-size: 50px
 }
 
-
 .mt-0 {
     margin-top: 0;
 }
@@ -890,10 +889,6 @@ label {
 
 .mr-32 {
     margin-right: 32px;
-}
-
-.mb-32 {
-    margin-bottom: 32px;
 }
 
 .ml-32 {

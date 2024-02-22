@@ -1,0 +1,171 @@
+html,
+body {
+    overflow-y: auto;
+}
+
+body {
+    text-align: center;
+    font: 20px 'IBM Plex Sans', sans-serif;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensure the body takes at least the full height of the viewport */
+}
+
+.site-header,
+.site-footer {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    /* Align text to the left */
+}
+
+.site-header {
+    order: -1;
+    /* Move the header to the top */
+}
+
+.site-footer {
+    margin-top: auto;
+    /* Push the footer to the bottom */
+}
+
+.footer-title1 {
+    margin-top: 10px;
+    /* Add some space between the footer content */
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 40px;
+    }
+}
+
+/* Styles for portrait screens */
+@media (max-width: 640px) {
+    .centered-image {
+        margin-top: 0;
+    }
+
+    .centered-image img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Styles for the logo in the header and footer */
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Align content to the left */
+    margin-bottom: 20px;
+}
+
+.header-logo-image,
+.footer-logo-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    padding-left: 0px;
+}
+
+section {
+    display: block;
+}
+
+.hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    max-width: 400px;
+    background-color: #FFFFFF;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 481px) {
+
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+.hero-copy {
+    width: 100%;
+    text-align: justify;
+}
+
+#loginForm {
+    text-align: -moz-center !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.form-input {
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    height: 48px;
+    border: none;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    background-color: whitesmoke;
+    color: #000000;
+    box-shadow: none;
+    max-width: 100%;
+    width: 100%;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+    margin-top: 24px;
+    max-width: 150px;
+}
+
+.button-block {
+    width: 100%;
+}
+
+.button-primary {
+    background: linear-gradient(65deg, #0270d7 0, #0f8afd 100%);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.button {
+    font-size: 14px;
+    letter-spacing: 0px;
+    font-weight: 600;
+    line-height: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    height: 48px;
+    padding: 10px 20px;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #007bff;
+    border-radius: 5px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow: visible;
+}
+
+button [type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
